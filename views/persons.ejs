@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Personas</title>
+    <link rel="stylesheet" href="./public/styles.css" />
+  </head>
+  <body>
+    <h1>Lista de Personas</h1>
+    <% if (persons.length === 0) { %>
+    <p>No hay personas que cumplan con el criterio de edad.</p>
+    <% } else { %>
+    <ul>
+      <% persons.forEach(person => { %>
+      <li>
+        <strong>Nombre:</strong> <%= person.name %><br />
+        <strong>Fecha de Nacimiento:</strong> <%= person.birthDate %><br />
+        <strong>Edad en Días:</strong> <%= moment().diff(moment(person.birthDate),
+        'days') %>
+      </li>
+      <% }); %>
+    </ul>
+    <% } %>
+  </body>
+  <style>
+    body,
+    html {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+  </style>
+</html>
